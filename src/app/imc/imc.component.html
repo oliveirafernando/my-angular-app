@@ -1,0 +1,81 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4">Calculadora de IMC</h1>
+    <p class="lead">
+      Esta página é uma exemplo de calculadora de IMC usando programação reativa
+      com Angular.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <form [formGroup]="imcForm" (ngSubmit)="cadastrarPessoa()">
+    <div class="form-group row">
+      <label for="nomeInputLabel" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-10">
+        <input
+          autofocus
+          type="text"
+          class="form-control"
+          id="nomeInputLabel"
+          [formControlName]="'nomeInput'"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="pesoInputLabel" class="col-sm-2 col-form-label">Peso</label>
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="pesoInputLabel"
+          [formControlName]="'pesoInput'"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="alturaInputLabel" class="col-sm-2 col-form-label"
+        >Altura</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="alturaInputLabel"
+          [formControlName]="'alturaInput'"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary mb-4">Calcular</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Altura</th>
+          <th scope="col">IMC</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+          <td scope="row">{{ pessoa.nome }}</td>
+          <td scope="row">{{ pessoa.peso }}</td>
+          <td scope="row">{{ pessoa.altura }}</td>
+          <td scope="row">{{ pessoa.imc }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
